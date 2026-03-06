@@ -1,4 +1,4 @@
-module github.com/dsyabitov/queuering
+module github.com/dsyabitov/go-queuering
 
 go 1.25.5
 
