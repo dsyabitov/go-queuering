@@ -40,14 +40,13 @@ func WithMurmurHash() HashRingOption {
 
 // HashRing implements consistent hashing for distributing queues across workers.
 type HashRing struct {
-	nodes        map[string]bool
-	hashFunc     HashFunc
+	nodes        map[string]bool // set of active nodes
 	totalQueues  int
 	virtualNodes int
+	hashFunc     HashFunc
 }
 
-// NewHashRing creates a new ring with the specified number of queues and virtual nodes.
-// xxHash32 is used by default.
+// NewHashRing creates a new ring with the specified number of queues and virtual nodes. xxHash32 is used by default.
 // Returns an error if parameters are invalid.
 func NewHashRing(totalQueues, virtualNodes int, opts ...HashRingOption) (*HashRing, error) {
 	if totalQueues < 1 {
